@@ -58,7 +58,7 @@ def print_key():
   print(f"#============================================================")
   print(f"# KEY")
   print(f"#============================================================")
-  key_pins = ["PIN_AJ14", "PIN_AK4", "PIN_AA14", "PIN_AA15"]
+  key_pins = ["PIN_AJ4", "PIN_AK4", "PIN_AA14", "PIN_AA15"]
   for a in range(len(key_pins)):
     print_3p3(f"KEY[{a}]", key_pins[a])
 print_key()
@@ -100,50 +100,83 @@ def print_gpio():
     print_3p3(f"GPIO[{a}]", gpio_pins[a])
 print_gpio()
 
+hsmc_pin_map = dict()
 def print_hsmc():
   print(f"#============================================================")
   print(f"# HSMC")
   print(f"#============================================================")
-  print_3p3(f"HSMC_CLKIN0", "PIN_J14") # Depending on JP3
-  print_2p5(f"HSMC_CLKIN_N1", "PIN_AB27") # Depending on JP3
-  print_2p5(f"HSMC_CLKIN_N2", "PIN_G15") # Depending on JP3
-  print_2p5(f"HSMC_CLKIN_P1", "PIN_AA26") # Depending on JP3
-  print_2p5(f"HSMC_CLKIN_P2", "PIN_H15") # Depending on JP3
-  print_2p5(f"HSMC_CLKOUT0", "PIN_AD29") # Depending on JP3
-  print_2p5(f"HSMC_CLKOUT_N1", "PIN_E6") # Depending on JP3
-  print_2p5(f"HSMC_CLKOUT_N2", "PIN_A10") # Depending on JP3
-  print_2p5(f"HSMC_CLKOUT_P1", "PIN_E7") # Depending on JP3
-  print_2p5(f"HSMC_CLKOUT_P2", "PIN_A11") # Depending on JP3
+  global hsmc_pin_map
+  hsmc_pin_map["HSMC_CLKIN0"] = "PIN_J14"
+  hsmc_pin_map["HSMC_CLKIN_N1"] = "PIN_AB27"
+  hsmc_pin_map["HSMC_CLKIN_N2"] = "PIN_G15"
+  hsmc_pin_map["HSMC_CLKIN_P1"] = "PIN_AA26"
+  hsmc_pin_map["HSMC_CLKIN_P2"] = "PIN_H15"
+  hsmc_pin_map["HSMC_CLKOUT0"]  = "PIN_AD29"
+  hsmc_pin_map["HSMC_CLKOUT_N1"] = "PIN_E6"
+  hsmc_pin_map["HSMC_CLKOUT_N2"] = "PIN_A10"
+  hsmc_pin_map["HSMC_CLKOUT_P1"] = "PIN_E7"
+  hsmc_pin_map["HSMC_CLKOUT_P2"] = "PIN_A11"
   hsmc_d_pins = ["PIN_C10", "PIN_H13", "PIN_C9", "PIN_H12"]
   for a in range(4):
-    print_2p5(f"HSMC_D[{a}]", hsmc_d_pins[a]) # Depending on JP3
-  print_2p5("HSMC_SCL", "PIN_AA28")
-  print_2p5("HSMC_SDA", "PIN_AE29")
+    hsmc_pin_map[f"HSMC_D[{a}]"] = hsmc_d_pins[a]
+  hsmc_pin_map["HSMC_SCL"] = "PIN_AA28"
+  hsmc_pin_map["HSMC_SDA"] = "PIN_AE29"
   hsmc_rx_d_n_pins = ["PIN_G11", "PIN_J12", "PIN_F10", "PIN_J9",  "PIN_K8",
                       "PIN_H7",  "PIN_G8",  "PIN_F8",  "PIN_E11", "PIN_B5",
                       "PIN_D9",  "PIN_D12", "PIN_D10", "PIN_B12", "PIN_E13",
                       "PIN_G13", "PIN_F14"]
   for a in range(17):
-    print_2p5(f"HSMC_RX_D_N[{a}]", hsmc_rx_d_n_pins[a]) # Depending on JP7
+    hsmc_pin_map[f"HSMC_RX_D_N[{a}]"] = hsmc_rx_d_n_pins[a]
   hsmc_rx_d_p_pins = ["PIN_G12", "PIN_K12", "PIN_G10", "PIN_J10", "PIN_K7",
                       "PIN_J7",  "PIN_H8",  "PIN_F9",  "PIN_F11", "PIN_B6",
                       "PIN_E9",  "PIN_E12", "PIN_D11", "PIN_C13", "PIN_F13",
                       "PIN_H14", "PIN_F15"]
   for a in range(17):
-    print_2p5(f"HSMC_RX_D_P[{a}]", hsmc_rx_d_p_pins[a]) # Depending on JP7
+    hsmc_pin_map[f"HSMC_RX_D_P[{a}]"] = hsmc_rx_d_p_pins[a]
   hsmc_tx_d_n_pins = ["PIN_A8",  "PIN_D7", "PIN_F6", "PIN_C5", "PIN_C4",
                       "PIN_E2",  "PIN_D4", "PIN_B3", "PIN_D1", "PIN_C2",
                       "PIN_B1",  "PIN_A3", "PIN_A5", "PIN_B7", "PIN_B8",
                       "PIN_B11", "PIN_A13"]
   for a in range(17):
-    print_2p5(f"HSMC_TX_D_N[{a}]", hsmc_tx_d_n_pins[a]) # Depending on JP7
+    hsmc_pin_map[f"HSMC_TX_D_N[{a}]"] = hsmc_tx_d_n_pins[a]
   hsmc_tx_d_p_pins = ["PIN_A9",  "PIN_E8", "PIN_G7", "PIN_D6", "PIN_D5",
                       "PIN_E3",  "PIN_E4", "PIN_C3", "PIN_E1", "PIN_D2",
                       "PIN_B2",  "PIN_A4", "PIN_A6", "PIN_C7", "PIN_C8",
                       "PIN_C12", "PIN_B13"]
   for a in range(17):
-    print_2p5(f"HSMC_TX_D_P[{a}]", hsmc_tx_d_p_pins[a]) # Depending on JP7
+    hsmc_pin_map[f"HSMC_TX_D_P[{a}]"] = hsmc_tx_d_p_pins[a]
+  for key in hsmc_pin_map.keys():
+    print_2p5(key, hsmc_pin_map[key]) # Depending on JP3
 print_hsmc()
+
+def print_hsmc_gpio():
+  print(f"#============================================================")
+  print(f"# GPIO_HSMC")
+  print(f"#============================================================")
+  global hsmc_pin_map
+  gpio_hsmc_j2_name_map = ["HSMC_CLKIN_N2",   "HSMC_RX_D_N[16]", "HSMC_CLKIN_P2",   "HSMC_RX_D_P[16]",
+                           "HSMC_TX_D_N[16]", "HSMC_RX_D_N[15]", "HSMC_TX_D_P[16]", "HSMC_RX_D_P[15]",
+                           "HSMC_TX_D_N[15]", "HSMC_RX_D_N[14]", "HSMC_TX_D_P[15]", "HSMC_RX_D_P[14]",
+                           "HSMC_TX_D_N[14]", "HSMC_RX_D_N[13]", "HSMC_TX_D_P[14]", "HSMC_RX_D_P[13]",
+                           "HSMC_CLKOUT_N2",  "HSMC_RX_D_N[12]", "HSMC_CLKOUT_P2",  "HSMC_RX_D_P[12]",
+                           "HSMC_TX_D_N[13]", "HSMC_RX_D_N[11]", "HSMC_TX_D_P[13]", "HSMC_RX_D_P[11]",
+                           "HSMC_TX_D_N[12]", "HSMC_RX_D_N[10]", "HSMC_TX_D_P[12]", "HSMC_RX_D_P[10]",
+                           "HSMC_TX_D_N[11]", "HSMC_RX_D_N[9]",  "HSMC_TX_D_P[11]", "HSMC_RX_D_P[9]",
+                           "HSMC_TX_D_N[10]", "HSMC_TX_D_N[9]",  "HSMC_TX_D_P[10]", "HSMC_TX_D_P[9]"]
+  for a in range(36):
+    print_2p5(f"GPIO_HSMC_J2[{a}]", hsmc_pin_map[gpio_hsmc_j2_name_map[a]]) # Depending on JP3
+  gpio_hsmc_j3_name_map = ["HSMC_CLKIN_N1",  "HSMC_RX_D_N[7]", "HSMC_CLKIN_P1",  "HSMC_RX_D_P[7]",
+                           "HSMC_TX_D_N[7]", "HSMC_RX_D_N[6]", "HSMC_TX_D_P[7]", "HSMC_RX_D_P[6]",
+                           "HSMC_TX_D_N[6]", "HSMC_RX_D_N[5]", "HSMC_TX_D_P[6]", "HSMC_RX_D_P[5]",
+                           "HSMC_TX_D_N[5]", "HSMC_RX_D_N[4]", "HSMC_TX_D_P[5]", "HSMC_RX_D_P[4]",
+                           "HSMC_CLKOUT_N1", "HSMC_RX_D_N[3]", "HSMC_CLKOUT_P1", "HSMC_RX_D_P[3]",
+                           "HSMC_TX_D_N[4]", "HSMC_RX_D_N[2]", "HSMC_TX_D_P[4]", "HSMC_RX_D_P[2]",
+                           "HSMC_TX_D_N[3]", "HSMC_RX_D_N[1]", "HSMC_TX_D_P[3]", "HSMC_RX_D_P[1]",
+                           "HSMC_TX_D_N[2]", "HSMC_RX_D_N[0]", "HSMC_TX_D_P[2]", "HSMC_RX_D_P[0]",
+                           "HSMC_TX_D_N[1]", "HSMC_TX_D_N[0]", "HSMC_TX_D_P[1]", "HSMC_TX_D_P[0]"]
+  for a in range(36):
+    print_2p5(f"GPIO_HSMC_J3[{a}]", hsmc_pin_map[gpio_hsmc_j3_name_map[a]]) # Depending on JP3
+print_hsmc_gpio()
 
 def print_audio():
   print(f"#============================================================")
