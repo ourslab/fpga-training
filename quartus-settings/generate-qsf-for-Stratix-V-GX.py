@@ -131,7 +131,7 @@ def print_led():
     print_2p5(f"USER_LED_G[5]", ledg_pins[5])
     print_1p8(f"USER_LED_G[6]", ledg_pins[6])
     print_2p5(f"USER_LED_G[7]", ledg_pins[7])
-print_ledr()
+print_led()
 
 def print_lcd():
   print(f"#============================================================")
@@ -144,7 +144,7 @@ def print_lcd():
     lcd_data_pins = ["AP10", "AN10", "AM10", "AL10", "AP9", "AN9", "AT9", "AR9"]
     for a in range(len(lcd_data_pins)):
       print_2p5("LCD_DATA[{a}]" , lcd_data_pins[a])
-print_hex()
+print_lcd()
 
 def print_hsmc():
   print(f"#============================================================")
