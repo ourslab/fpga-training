@@ -158,264 +158,53 @@ def print_hsmc():
                    "AC12", "P8"  , "N10" , "N9"  , "J9"  , "H10" , "D9"  , "C10" , "A11" , "B8"  ,
                    "AT11", "AM11", "AK11", "AG12", "AE10", "AD9" , "AB9" , "AB12", "R8"  , "P10" ,
                    "N8"  , "K9"  , "J10" , "E9"  , "D10" , "B11" , "A8"]
-    print_gpio("HSMA_CLK_IN0"   , hsmc_a_pins[0])
-    print_gpio("HSMA_CLK_IN_N1" , hsmc_a_pins[1])
-    print_gpio("HSMA_CLK_IN_N2" , hsmc_a_pins[2])
-    print_gpio("HSMA_CLK_IN_P1" , hsmc_a_pins[3])
-    print_gpio("HSMA_CLK_IN_P2" , hsmc_a_pins[4])
-    print_gpio("HSMA_CLK_OUT0"  , hsmc_a_pins[5])
-    print_gpio("HSMA_CLK_OUT_N1", hsmc_a_pins[6])
-    print_gpio("HSMA_CLK_OUT_N2", hsmc_a_pins[7])
-    print_gpio("HSMA_CLK_OUT_P1", hsmc_a_pins[8])
-    print_gpio("HSMA_CLK_OUT_P2", hsmc_a_pins[9])
-    print_gpio("HSMA_RX_P0"     , hsmc_a_pins[10])
-    print_gpio("HSMA_RX_N0"     , hsmc_a_pins[11])
-    print_gpio("HSMA_RX_P1"     , hsmc_a_pins[12])
-    print_gpio("HSMA_RX_N1"     , hsmc_a_pins[13])
-    print_gpio("HSMA_RX_P2"     , hsmc_a_pins[14])
-    print_gpio("HSMA_RX_N2"     , hsmc_a_pins[15])
-    print_gpio("HSMA_RX_P3"     , hsmc_a_pins[16])
-    print_gpio("HSMA_RX_N3"     , hsmc_a_pins[17])
-    print_gpio("HSMA_RX_P4"     , hsmc_a_pins[18])
-    print_gpio("HSMA_RX_N4"     , hsmc_a_pins[19])
-    print_gpio("HSMA_RX_P5"     , hsmc_a_pins[20])
-    print_gpio("HSMA_RX_N5"     , hsmc_a_pins[21])
-    print_gpio("HSMA_RX_P6"     , hsmc_a_pins[22])
-    print_gpio("HSMA_RX_N6"     , hsmc_a_pins[23])
-    print_gpio("HSMA_RX_P7"     , hsmc_a_pins[24])
-    print_gpio("HSMA_RX_N7"     , hsmc_a_pins[25])
-
-def print_audio():
-  print(f"#============================================================")
-  print(f"# AUD")
-  print(f"#============================================================")
-  print_lvttl3p3(f"AUD_ADCLRCK", "PIN_K8")
-  print_lvttl3p3(f"AUD_ADCDAT", "PIN_K7")
-  print_lvttl3p3(f"AUD_DACLRCK", "PIN_H8")
-  print_lvttl3p3(f"AUD_DACDAT", "PIN_J7")
-  print_lvttl3p3(f"AUD_XCK", "PIN_G7")
-  print_lvttl3p3(f"AUD_BCLK", "PIN_H7")
-print_audio()
-
-def print_i2c():
-  print(f"#============================================================")
-  print(f"# I2C")
-  print(f"#============================================================")
-  print_lvttl3p3(f"FPGA_I2C_SCLK", "PIN_J12")
-  print_lvttl3p3(f"FPGA_I2C_SDAT", "PIN_K12")
-  print_lvttl3p3(f"HPS_I2C1_SCLK", "PIN_E23")
-  print_lvttl3p3(f"HPS_I2C1_SDAT", "PIN_C24")
-  print_lvttl3p3(f"HPS_I2C2_SCLK", "PIN_H23")
-  print_lvttl3p3(f"HPS_I2C2_SDAT", "PIN_A25")
-print_i2c()
-
-def print_vga():
-  print(f"#============================================================")
-  print(f"# VGA")
-  print(f"#============================================================")
-  vga_r = ["PIN_A13", "PIN_C13", "PIN_E13", "PIN_B12", "PIN_C12", "PIN_D12", "PIN_E12", "PIN_F13"]
-  for a in range(len(vga_r)):
-    print_lvttl3p3(f"VGA_R[{a}]", vga_r[a])
-  vga_g = ["PIN_J9" , "PIN_J10", "PIN_H12", "PIN_G10", "PIN_G11", "PIN_G12", "PIN_F11", "PIN_E11"]
-  for a in range(len(vga_g)):
-    print_lvttl3p3(f"VGA_G[{a}]", vga_g[a])
-  vga_b = ["PIN_B13", "PIN_G13", "PIN_H13", "PIN_F14", "PIN_H14", "PIN_F15", "PIN_G15", "PIN_J14"]
-  for a in range(len(vga_b)):
-    print_lvttl3p3(f"VGA_B[{a}]", vga_b[a])
-  print_lvttl3p3(f"VGA_CLK", "PIN_A11")
-  print_lvttl3p3(f"VGA_BLANK_N", "PIN_F10")
-  print_lvttl3p3(f"VGA_HS", "PIN_B11")
-  print_lvttl3p3(f"VGA_VS", "PIN_D11")
-  print_lvttl3p3(f"VGA_SYNC_N", "PIN_C10")
-print_vga()
-
-def print_TVDecoder():
-  print(f"#============================================================")
-  print(f"# TVDecoder")
-  print(f"#============================================================")
-  td_data = ["PIN_D2", "PIN_B1", "PIN_E2", "PIN_B2", "PIN_D1", "PIN_E1", "PIN_C2", "PIN_B3"]
-  for a in range(len(td_data)):
-    print_lvttl3p3(f"TD_DATA[{a}]", td_data[a])
-  print_lvttl3p3(f"TD_HS", "PIN_A5")
-  print_lvttl3p3(f"TD_VS", "PIN_A3")
-  print_lvttl3p3(f"TD_CLK27", "PIN_H15")
-  print_lvttl3p3(f"TD_RESET_N", "PIN_F6")
-print_TVDecoder()
-
-def print_ir():
-  print(f"#============================================================")
-  print(f"# IR")
-  print(f"#============================================================")
-  print_lvttl3p3(f"IRDA_RXD", "PIN_AA30")
-  print_lvttl3p3(f"IRDA_TXD", "PIN_AB30")
-print_ir()
-
-def print_dram():
-  print(f"#============================================================")
-  print(f"# DRAM")
-  print(f"#============================================================")
-  dram_addr = ["PIN_AK14", "PIN_AH14", "PIN_AG15", "PIN_AE14", "PIN_AB15", "PIN_AC14", 
-                "PIN_AD14", "PIN_AF15", "PIN_AH15", "PIN_AG13", "PIN_AG12", "PIN_AH13", "PIN_AJ14"]
-  for a in range(len(dram_addr)):
-    print_lvttl3p3(f"DRAM_ADDR[{a}]", dram_addr[a])
-  dram_dat = ["PIN_AK6" , "PIN_AJ7" , "PIN_AK7" , "PIN_AK8" , "PIN_AK9", "PIN_AG10", 
-               "PIN_AK11", "PIN_AJ11", "PIN_AH10", "PIN_AJ10", "PIN_AJ9", "PIN_AH9" , 
-               "PIN_AH8" , "PIN_AH7" , "PIN_AJ6" , "PIN_AJ5"]
-  for a in range(len(dram_dat)):
-    print_lvttl3p3(f"DRAM_DQ[{a}]", dram_dat[a])
-  print_lvttl3p3(f"DRAM_BA[0]", "PIN_AF13")
-  print_lvttl3p3(f"DRAM_BA[1]", "PIN_AJ12")
-  print_lvttl3p3(f"DRAM_LDQM", "PIN_AB13")
-  print_lvttl3p3(f"DRAM_UDQM", "PIN_AK12")
-  print_lvttl3p3(f"DRAM_RAS_N", "PIN_AE13")
-  print_lvttl3p3(f"DRAM_CAS_N", "PIN_AF11")
-  print_lvttl3p3(f"DRAM_CKE", "PIN_AK13")
-  print_lvttl3p3(f"DRAM_CLK", "PIN_AH12")
-  print_lvttl3p3(f"DRAM_WE_N", "PIN_AA13")
-  print_lvttl3p3(f"DRAM_CS_N", "PIN_AG11")
-print_dram()
-
-def print_ps2():
-  print(f"#============================================================")
-  print(f"# PS2")
-  print(f"#============================================================")
-  print_lvttl3p3(f"PS2_CLK", "PIN_AD7")
-  print_lvttl3p3(f"PS2_DAT", "PIN_AE7")
-  print_lvttl3p3(f"PS2_CLK2", "PIN_AD9")
-  print_lvttl3p3(f"PS2_DAT2", "PIN_AE9")
-print_ps2()
-
-def print_adconv():
-  print(f"#============================================================")
-  print(f"# ADconverter")
-  print(f"#============================================================")
-  print_lvttl3p3(f"ADC_CS_N", "PIN_AJ4")
-  print_lvttl3p3(f"ADC_DOUT", "PIN_AK3")
-  print_lvttl3p3(f"ADC_DIN", "PIN_AK4")
-  print_lvttl3p3(f"ADC_SCLK", "PIN_AK2")
-print_adconv()
-
-def print_hps_enet():
-  print(f"#============================================================")
-  print(f"# HPS_ENET")
-  print(f"#============================================================")
-  print_lvttl3p3(f"HPS_ENET_TX_EN", "PIN_A20")
-  print_lvttl3p3(f"HPS_ENET_TX_DATA[0]", "PIN_F20")
-  print_lvttl3p3(f"HPS_ENET_TX_DATA[1]", "PIN_J19")
-  print_lvttl3p3(f"HPS_ENET_TX_DATA[2]", "PIN_F21")
-  print_lvttl3p3(f"HPS_ENET_TX_DATA[3]", "PIN_F19")
-  print_lvttl3p3(f"HPS_ENET_RX_DV", "PIN_K17")
-  print_lvttl3p3(f"HPS_ENET_RX_DATA[0]", "PIN_A21")
-  print_lvttl3p3(f"HPS_ENET_RX_DATA[1]", "PIN_B20")
-  print_lvttl3p3(f"HPS_ENET_RX_DATA[2]", "PIN_B18")
-  print_lvttl3p3(f"HPS_ENET_RX_DATA[3]", "PIN_D21")
-  print_lvttl3p3(f"HPS_ENET_RX_CLK", "PIN_G20")
-  print_lvttl3p3(f"HPS_ENET_RESET_N", "PIN_E18")
-  print_lvttl3p3(f"HPS_ENET_MDIO", "PIN_E21")
-  print_lvttl3p3(f"HPS_ENET_MDC", "PIN_B21")
-  print_lvttl3p3(f"HPS_ENET_INT_N", "PIN_C19")
-  print_lvttl3p3(f"HPS_ENET_GTX_CLK", "PIN_H19")
-print_hps_enet()
-
-def print_hps_uart():  
-  print(f"#============================================================")
-  print(f"# HPS_UART")
-  print(f"#============================================================")
-  print_lvttl3p3(f"HPS_UART_RX", f"PIN_B25")
-  print_lvttl3p3(f"HPS_UART_TX", f"PIN_C25") 
-  print_lvttl3p3(f"HPS_CONV_USB_N", f"PIN_B15")
-print_hps_uart()
-
-def print_hps_ddr3():
-  print(f"#============================================================")
-  print(f"# HPS_DDR3")
-  print(f"#============================================================")
-  hps_ddr3_a_pins = ["PIN_F26", "PIN_G30", "PIN_F28", "PIN_F30", "PIN_J25", "PIN_J27", "PIN_F29", "PIN_E28",
-                     "PIN_H27", "PIN_G26", "PIN_D29", "PIN_C30", "PIN_B30", "PIN_C29", "PIN_H25"]
-  for a in range(len(hps_ddr3_a_pins)):
-    print_sstl1p5(f"HPS_DDR3_A[{a}]", hps_ddr3_a_pins[a]) 
-  hps_ddr3_ba_pins = ["PIN_E29", "PIN_J24", "PIN_J23"]
-  for a in range(len(hps_ddr3_ba_pins)):
-    print_sstl1p5(f"HPS_DDR3_BA[{a}]", hps_ddr3_ba_pins[a]) 
-  print_sstl1p5(f"HPS_DDR3_CAS_n", "PIN_E27")  
-  print_sstl1p5(f"HPS_DDR3_CKE", "PIN_L29")  
-  print_diff1p5(f"HPS_DDR3_CK_n", "PIN_L23")  
-  print_diff1p5(f"HPS_DDR3_CK_p", "PIN_M23")  
-  print_sstl1p5(f"HPS_DDR3_CS_n", "PIN_H24")  
-  hps_ddr3_dm_pins = ["PIN_K28", "PIN_M28", "PIN_R28", "PIN_W30"]
-  for a in range(len(hps_ddr3_dm_pins)):
-    print_sstl1p5(f"HPS_DDR3_DM[{a}]", hps_ddr3_dm_pins[a])
-  hps_ddr3_dq_pins = ["PIN_K23", "PIN_K22", "PIN_H30", "PIN_G28", "PIN_L25", "PIN_L24", 
-                      "PIN_J30", "PIN_J29", "PIN_K26", "PIN_L26", "PIN_K29", "PIN_K27", 
-                      "PIN_M26", "PIN_M27", "PIN_L28", "PIN_M30", "PIN_U26", "PIN_T26", 
-                      "PIN_N29", "PIN_N28", "PIN_P26", "PIN_P27", "PIN_N27", "PIN_R29", 
-                      "PIN_P24", "PIN_P25", "PIN_T29", "PIN_T28", "PIN_R27", "PIN_R26", 
-                      "PIN_V30", "PIN_W29"]
-  for a in range(len(hps_ddr3_dq_pins)):
-    print_sstl1p5(f"HPS_DDR3_DQ[{a}]", hps_ddr3_dq_pins[a])
-  hps_ddr3_dqs_n_pins = ["PIN_M19", "PIN_N24", "PIN_R18", "PIN_R21"]
-  for a in range(len(hps_ddr3_dqs_n_pins)):
-    print_sstl1p5(f"HPS_DDR3_DQS_N[{a}]", hps_ddr3_dqs_n_pins[a])
-  hps_ddr3_dqs_p_pins = ["PIN_N18", "PIN_N25", "PIN_R19", "PIN_R22"]
-  for a in range(len(hps_ddr3_dqs_p_pins)):
-    print_sstl1p5(f"HPS_DDR3_DQS_P[{a}]", hps_ddr3_dqs_p_pins[a])
-  print_sstl1p5(f"HPS_DDR3_ODT", "PIN_H28")  
-  print_sstl1p5(f"HPS_DDR3_RAS_n", "PIN_D30")  
-  print_sstl1p5(f"HPS_DDR3_RESET_n", "PIN_P30")  
-  print_sstl1p5(f"HPS_DDR3_WE_n", "PIN_C28")  
-  print_sstl1p5(f"HPS_DDR3_RZQ", "PIN_D27")  
-print_hps_ddr3()
-
-def print_hps_sdcard():
-  print(f"#============================================================")
-  print(f"# HPS_SD")
-  print(f"#============================================================")
-  print_lvttl3p3(f"HPS_SD_CLK", "PIN_A16")
-  print_lvttl3p3(f"HPS_SD_CMD", "PIN_F18")
-  print_lvttl3p3(f"HPS_SD_DATA[0]", "PIN_G18")
-  print_lvttl3p3(f"HPS_SD_DATA[1]", "PIN_C17")
-  print_lvttl3p3(f"HPS_SD_DATA[2]", "PIN_D17")
-  print_lvttl3p3(f"HPS_SD_DATA[3]", "PIN_B16")
-print_hps_sdcard()
-
-def print_hps_usb():
-  print(f"#============================================================")
-  print(f"# HPS_USB")
-  print(f"#============================================================")
-  print_lvttl3p3(f"HPS_USB_CLKOUT", "PIN_N16")
-  hps_usb_data = ["PIN_E16", "PIN_G16", "PIN_D16", "PIN_D14", "PIN_A15", 
-                  "PIN_C14", "PIN_D15", "PIN_M17"]
-  for a in range(len(hps_usb_data)):
-    print_lvttl3p3(f"HPS_USB_DATA[{a}]", hps_usb_data[a])
-  print_lvttl3p3(f"HPS_USB_DIR", "PIN_E14")
-  print_lvttl3p3(f"HPS_USB_NXT", "PIN_A14")
-  print_lvttl3p3(f"HPS_USB_RESET", "PIN_G17")
-  print_lvttl3p3(f"HPS_USB_STP", "PIN_C15")
-print_hps_usb()
-
-def print_hps_gsensor():
-  print(f"#============================================================")
-  print(f"# HPS_GSENSOR")
-  print(f"#============================================================")
-  print_lvttl3p3(f"HPS_GSENSOR_INT", "PIN_B22")
-print_hps_gsensor()
-
-def print_hps_ltc():
-  print(f"#============================================================")
-  print(f"# HPS_LTC")
-  print(f"#============================================================")
-  print_lvttl3p3(f"HPS_LTC_GPIO", "PIN_H17")
-print_hps_ltc()
-
-def print_hps_spim():
-  print(f"#============================================================")
-  print(f"# HPS_SPIM")
-  print(f"#============================================================")
-  print_lvttl3p3(f"HPS_SPIM_CLK", "PIN_C23")
-  print_lvttl3p3(f"HPS_SPIM_MISO", "PIN_E24")
-  print_lvttl3p3(f"HPS_SPIM_MOSI", "PIN_D22")
-  print_lvttl3p3(f"HPS_SPIM_SS", "PIN_D24")
-print_hps_spim()
+    print_2p5("HSMA_CLK_IN0"   , hsmc_a_pins[0])
+    print_2p5("HSMA_CLK_IN_N1" , hsmc_a_pins[1])
+    print_2p5("HSMA_CLK_IN_N2" , hsmc_a_pins[2])
+    print_2p5("HSMA_CLK_IN_P1" , hsmc_a_pins[3])
+    print_2p5("HSMA_CLK_IN_P2" , hsmc_a_pins[4])
+    print_2p5("HSMA_CLK_OUT0"  , hsmc_a_pins[5])
+    print_2p5("HSMA_CLK_OUT_N1", hsmc_a_pins[6])
+    print_2p5("HSMA_CLK_OUT_N2", hsmc_a_pins[7])
+    print_2p5("HSMA_CLK_OUT_P1", hsmc_a_pins[8])
+    print_2p5("HSMA_CLK_OUT_P2", hsmc_a_pins[9])
+    print_2p5("HSMA_RX_P[0]"   , hsmc_a_pins[10])
+    print_2p5("HSMA_RX_N[0]"   , hsmc_a_pins[11])
+    print_2p5("HSMA_RX_P[1]"   , hsmc_a_pins[12])
+    print_2p5("HSMA_RX_N[1]"   , hsmc_a_pins[13])
+    print_2p5("HSMA_RX_P[2]"   , hsmc_a_pins[14])
+    print_2p5("HSMA_RX_N[2]"   , hsmc_a_pins[15])
+    print_2p5("HSMA_RX_P[3]"   , hsmc_a_pins[16])
+    print_2p5("HSMA_RX_N[3]"   , hsmc_a_pins[17])
+    print_2p5("HSMA_RX_P[4]"   , hsmc_a_pins[18])
+    print_2p5("HSMA_RX_N[4]"   , hsmc_a_pins[19])
+    print_2p5("HSMA_RX_P[5]"   , hsmc_a_pins[20])
+    print_2p5("HSMA_RX_N[5]"   , hsmc_a_pins[21])
+    print_2p5("HSMA_RX_P[6]"   , hsmc_a_pins[22])
+    print_2p5("HSMA_RX_N[6]"   , hsmc_a_pins[23])
+    print_2p5("HSMA_RX_P[7]"   , hsmc_a_pins[24])
+    print_2p5("HSMA_RX_N[7]"   , hsmc_a_pins[25])
+    print_2p5("HSMA_TX_P[0]"   , hsmc_a_pins[26])
+    print_2p5("HSMA_TX_N[0]"   , hsmc_a_pins[27])
+    print_2p5("HSMA_TX_P[1]"   , hsmc_a_pins[28])
+    print_2p5("HSMA_TX_N[1]"   , hsmc_a_pins[29])
+    print_2p5("HSMA_TX_P[2]"   , hsmc_a_pins[30])
+    print_2p5("HSMA_TX_N[2]"   , hsmc_a_pins[31])
+    print_2p5("HSMA_TX_P[3]"   , hsmc_a_pins[32])
+    print_2p5("HSMA_TX_N[3]"   , hsmc_a_pins[33])
+    print_2p5("HSMA_TX_P[4]"   , hsmc_a_pins[34])
+    print_2p5("HSMA_TX_N[4]"   , hsmc_a_pins[35])
+    print_2p5("HSMA_TX_P[5]"   , hsmc_a_pins[36])
+    print_2p5("HSMA_TX_N[5]"   , hsmc_a_pins[37])
+    print_2p5("HSMA_TX_P[6]"   , hsmc_a_pins[38])
+    print_2p5("HSMA_TX_N[6]"   , hsmc_a_pins[39])
+    print_2p5("HSMA_TX_P[7]"   , hsmc_a_pins[40])
+    print_2p5("HSMA_TX_N[7]"   , hsmc_a_pins[41])
+    print_2p5("HSMA_D[0]"      , hsmc_a_pins[42])
+    print_2p5("HSMA_D[1]"      , hsmc_a_pins[43])
+    print_2p5("HSMA_D[2]"      , hsmc_a_pins[44])
+    print_2p5("HSMA_D[3]"      , hsmc_a_pins[45])
+    
 
 def print_config():
   print(f"#============================================================")
