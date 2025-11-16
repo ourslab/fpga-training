@@ -143,7 +143,7 @@ def print_lcd():
     print_2p5("LCD_CSn"     , "AU9")
     lcd_data_pins = ["AP10", "AN10", "AM10", "AL10", "AP9", "AN9", "AT9", "AR9"]
     for a in range(len(lcd_data_pins)):
-      print_2p5("LCD_DATA[{a}]" , lcd_data_pins[a])
+      print_2p5(f"LCD_DATA[{a}]" , lcd_data_pins[a])
 print_lcd()
 
 def print_hsmc():
