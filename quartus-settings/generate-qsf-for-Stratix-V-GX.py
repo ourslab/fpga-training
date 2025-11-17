@@ -152,7 +152,7 @@ def print_hsmc():
   print(f"#============================================================")
   if CHIP_SELECT == "Stratix V GX":
     hsmc_a_pins = ["AG28", "AT8" , "G6"  , "AR8" , "G7"  , "AJ10", "AH9" , "G8"  , "AG9" , "G9"  ,
-                   "AV2" , "AV1" , "AP2" , "AP2" , "AM2" , "AM1" , "AK2" , "AK1" , "AH2" , "AH1" ,
+                   "AV2" , "AV1" , "AP2" , "AP1" , "AM2" , "AM1" , "AK2" , "AK1" , "AH2" , "AH1" ,
                    "AF2" , "AF1" , "AD2" , "AD1" , "AB2" , "AB1" , "AU4" , "AU3" , "AN4" , "AN3" ,
                    "AL4" , "AL3" , "AJ4" , "AJ3" , "AG4" , "AG3" , "AE4" , "AE3" , "AC4" , "AC3" , 
                    "AA4" , "AA3" , "AJ29", "AK29", "AR28", "AP28", "AW8" , "AM29", "AL29", "AW11",
