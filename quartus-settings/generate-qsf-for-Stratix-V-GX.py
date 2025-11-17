@@ -163,6 +163,8 @@ def print_hsmc():
                    "AC12", "P8"  , "N10" , "N9"  , "J9"  , "H10" , "D9"  , "C10" , "A11" , "B8"  ,
                    "AT11", "AM11", "AK11", "AG12", "AE10", "AD9" , "AB9" , "AB12", "R8"  , "P10" ,
                    "N8"  , "K9"  , "J10" , "E9"  , "D10" , "B11" , "A8"]
+    for a in range(len(hsmc_a_pins)):
+      print_2p5(f"HSMA[{a}]", hsmc_a_pins[a])
     print_2p5("HSMA_CLK_IN[0]"   , hsmc_a_pins[0])
     print_2p5("HSMA_CLK_IN_N[1]" , hsmc_a_pins[1])
     print_2p5("HSMA_CLK_IN_N[2]" , hsmc_a_pins[2])
@@ -291,6 +293,8 @@ def print_hsmc():
                    "G15" , "F14" , "F15" , "E14" , "B14" , "A14" , "C14" , "C15" , "K13" , "C13" ,
                    "P14" , "D15" , "L13" , "D13" , "R14" , "E15" , "AA31", "AU7" , "P13" , "AL30", 
                    "AK30", "M17" ]
+    for a in range(len(hsmc_b_pins)):
+      print_2p5(f"HSMB[{a}]", hsmc_b_pins[a])
     print_pcml1p4("HSMB_RX_P[0]"     , hsmc_b_pins[0])
     print_pcml1p4("HSMB_RX_N[0]"     , hsmc_b_pins[1])
     print_pcml1p4("HSMB_RX_P[1]"     , hsmc_b_pins[2])
