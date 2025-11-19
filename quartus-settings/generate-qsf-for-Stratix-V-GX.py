@@ -182,7 +182,7 @@ def print_hsmc():
     print_2p5("HSMA_CLK_OUT_P[1]", hsmc_a_pins[8])
     print_2p5("HSMA_GPIO[38]"    , hsmc_a_pins[8])
     print_2p5("HSMA_CLK_OUT_P[2]", hsmc_a_pins[9])
-    print_2p5("HSMA_LED_R_C[9]"  , hsmc_a_pins[9)
+    print_2p5("HSMA_LED_R_C[9]"  , hsmc_a_pins[9])
     print_2p5("HSMA_RX_P[0]"     , hsmc_a_pins[10])
     print_2p5("HSMA_RX_N[0]"     , hsmc_a_pins[11])
     print_2p5("HSMA_RX_P[1]"     , hsmc_a_pins[12])
